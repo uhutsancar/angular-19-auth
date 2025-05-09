@@ -14,4 +14,10 @@ export const routes: Routes = [
         canMatch: [authGuard]
     },
 
+     {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
+ }
+
 ];

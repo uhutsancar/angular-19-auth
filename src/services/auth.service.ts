@@ -11,6 +11,26 @@ export class AuthService {
   isLoggedIn = computed(() => !!this.#user());
   user = this.#user.asReadonly();
   setUser(user:User | null) {
-    this.#user.set(user);
+    
+     if(user) {
+     this.#user.set(user);
+ localStorage.setItem('user' , JSON.stringify(user))
+ }
+ else {
+   this.#user.set(null);
+ localStorage.removeItem('user')
+
+ }
+   
+  }
+
+init() {
+  const user  = localStorage.getItem('user');
+  if(user) {
+    this.#user.set(JSON.parse(user))
   }
 }
+
+
+  }
+
